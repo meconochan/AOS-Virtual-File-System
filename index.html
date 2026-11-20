@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AOS File Management System Simulator</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- LOGIN SCREEN -->
+<div id="loginScreen" class="login-screen">
+  <div class="login-card">
+    <div class="login-brand">
+      <div class="brand-mark">AOS</div>
+      <h1>File Management System</h1>
+      <p>Applied Operating Systems &middot; Virtual Disk Simulator</p>
+    </div>
+    <div class="field">
+      <label for="loginUser">Username</label>
+      <input id="loginUser" type="text" placeholder="admin" autocomplete="username">
+    </div>
+    <div class="field">
+      <label for="loginPass">Password</label>
+      <input id="loginPass" type="password" placeholder="••••••••" autocomplete="current-password">
+    </div>
+    <div id="loginError" class="login-error"></div>
+    <button id="loginBtn" class="btn btn-primary btn-block">Sign In</button>
+    <div class="login-hint">
+      <strong>Default accounts</strong>
+      <span><code>admin</code> / <code>admin123</code> &mdash; Administrator</span>
+      <span><code>maria</code> / <code>maria123</code> &mdash; Standard User</span>
+      <span><code>guest</code> / <code>guest123</code> &mdash; Read-only</span>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN APP -->
+<div id="app" class="app hidden">
+
+  <aside class="sidebar">
+    <div class="sidebar-head">
+      <div class="brand-mark small">AOS</div>
+      <span>Virtual File System</span>
+    </div>
+    <nav class="nav">
+      <a class="nav-item active" data-view="dashboard"><span class="ico">▤</span>Dashboard</a>
+      <a class="nav-item" data-view="explorer"><span class="ico">🗀</span>File Explorer</a>
+      <a class="nav-item" data-view="directory"><span class="ico">🗂</span>Directory Manager</a>
+      <a class="nav-item" data-view="metadata"><span class="ico">ⓘ</span>File Metadata</a>
+      <a class="nav-item" data-view="allocation"><span class="ico">⛁</span>Block Allocation</a>
+      <a class="nav-item" data-view="bitmap"><span class="ico">▦</span>Bitmap Visualization</a>
+      <a class="nav-item" data-view="disk"><span class="ico">⚙</span>Virtual Disk Management</a>
+      <a class="nav-item" data-view="permissions"><span class="ico">🔒</span>Permissions Manager</a>
+      <a class="nav-item" data-view="users"><span class="ico">👤</span>User Management</a>
+      <a class="nav-item" data-view="logs"><span class="ico">≡</span>Activity Logs</a>
+      <a class="nav-item" data-view="settings"><span class="ico">⋯</span>Settings</a>
+    </nav>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <h2 id="viewTitle">Dashboard</h2>
+      <div class="topbar-right">
+        <div class="disk-pill" id="diskPill">
+          <span class="dot"></span><span id="pillText">Loading…</span>
+        </div>
+        <div class="user-chip">
+          <div class="avatar" id="userAvatar">A</div>
+          <div class="user-meta">
+            <strong id="userName">—</strong>
+            <span id="userRole">—</span>
+          </div>
+          <button id="logoutBtn" class="btn btn-ghost btn-sm">Sign out</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="content" id="content"></div>
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
+<div id="modalRoot" class="modal-root hidden"></div>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
